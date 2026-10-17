@@ -1,0 +1,97 @@
+# TrendRadar 配置模板
+# 复制此文件到 config/config.yaml 并修改
+
+# ===============================================================
+# 基础设置
+# ===============================================================
+app:
+  timezone: "Asia/Shanghai"
+  show_version_update: true
+
+# ===============================================================
+# 调度系统
+# ===============================================================
+schedule:
+  enabled: true
+  preset: "morning_evening"    # always_on | morning_evening | office_hours | night_owl | custom
+
+# ===============================================================
+# 热榜平台
+# ===============================================================
+platforms:
+  enabled: true
+  sources:
+    - id: "toutiao"
+      name: "今日头条"
+    - id: "baidu"
+      name: "百度热搜"
+    - id: "weibo"
+      name: "微博"
+    - id: "zhihu"
+      name: "知乎"
+    # 更多平台见 references/platforms.md
+
+# ===============================================================
+# RSS 订阅
+# ===============================================================
+rss:
+  enabled: true
+  freshness_filter:
+    enabled: true
+    max_age_days: 1
+  feeds:
+    - id: "hacker-news"
+      name: "Hacker News"
+      url: "https://hnrss.org/frontpage"
+    # 更多源见 references/rss-feeds.md
+
+# ===============================================================
+# 报告模式
+# ===============================================================
+report:
+  mode: "current"              # daily | current | incremental
+  display_mode: "keyword"      # keyword | platform
+
+# ===============================================================
+# 筛选策略
+# ===============================================================
+filter:
+  method: "keyword"            # keyword | ai
+
+# ===============================================================
+# AI 配置（用于分析和智能筛选）
+# ===============================================================
+ai:
+  model: "deepseek/deepseek-chat"
+  api_key: ""                  # 填写你的 API Key
+  timeout: 120
+
+# ===============================================================
+# AI 分析
+# ===============================================================
+ai_analysis:
+  enabled: true
+  language: "Chinese"
+
+# ===============================================================
+# 推送通知
+# ===============================================================
+notification:
+  enabled: true
+  channels:
+    feishu:
+      webhook_url: ""
+    wework:
+      webhook_url: ""
+    telegram:
+      bot_token: ""
+      chat_id: ""
+
+# ===============================================================
+# 存储
+# ===============================================================
+storage:
+  backend: "auto"              # auto | local | remote
+  formats:
+    sqlite: true
+    html: true
